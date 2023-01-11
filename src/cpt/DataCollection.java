@@ -16,10 +16,10 @@ public class DataCollection{
         BufferedReader file = new BufferedReader(new FileReader("src/cpt/income-inequality-before-and-after-taxes.csv"));
         Data[] data = new Data[180];
 
-        while(intCount < 180){
+        for(intCount = 0; intCount < 180; intCount++){
             strLine = file.readLine();
             String[] records = strLine.split(",");
-
+    
             strCountry = records[0];
             strCode = records[1];
             intYear = Integer.parseInt(records[2]);
@@ -29,9 +29,7 @@ public class DataCollection{
             Data elements = new Data(strCountry, strCode, intYear, dblMarket, dblDisposable);
             data[intCount] = elements;
 
-            intCount++;
             System.out.println(records[0] + "," + records[1] + "," + records[2] + "," + records[3] + "," + records[4]);
-            
         }
         file.close();
     }
