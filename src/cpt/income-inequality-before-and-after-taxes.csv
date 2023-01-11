@@ -1,4 +1,3 @@
-Entity,Code,Year,Gini equivalised market household income entire pop (Incomes across the Distribution Database (2016)),Gini equivalised disposable household income entire pop (Incomes across the Distribution Database (2016))
 Australia,AUS,1981,0.405,0.282
 Australia,AUS,1985,0.44,0.293
 Australia,AUS,1989,0.44,0.304
@@ -43,7 +42,7 @@ Denmark,DNK,2010,0.48,0.254
 Estonia,EST,2004,0.508,0.35
 Estonia,EST,2007,0.456,0.316
 Estonia,EST,2010,0.495,0.326
-Estonia,EST,2000,,0.364
+Estonia,EST,2000,0,0.364
 Finland,FIN,1987,0.39,0.207
 Finland,FIN,1991,0.409,0.209
 Finland,FIN,1995,0.483,0.217
@@ -87,7 +86,7 @@ Ireland,IRL,2000,0.445,0.314
 Ireland,IRL,2004,0.513,0.325
 Ireland,IRL,2007,0.514,0.303
 Ireland,IRL,2010,0.578,0.296
-Ireland,IRL,1987,,0.33
+Ireland,IRL,1987,0,0.33
 Israel,ISR,1986,0.487,0.31
 Israel,ISR,1992,0.48,0.305
 Israel,ISR,1997,0.507,0.337
@@ -131,13 +130,13 @@ Poland,POL,1992,0.422,0.262
 Poland,POL,1995,0.569,0.324
 Poland,POL,2007,0.516,0.316
 Poland,POL,2010,0.499,0.314
-Poland,POL,1999,,0.292
-Poland,POL,2004,,0.319
+Poland,POL,1999,0,0.292
+Poland,POL,2004,0,0.319
 Slovakia,SVK,1992,0.404,0.189
 Slovakia,SVK,2004,0.455,0.269
 Slovakia,SVK,2007,0.419,0.248
 Slovakia,SVK,2010,0.435,0.265
-Slovakia,SVK,1996,,0.249
+Slovakia,SVK,1996,0,0.249
 Slovenia,SVN,1997,0.369,0.229
 Slovenia,SVN,1999,0.375,0.232
 Slovenia,SVN,2004,0.399,0.231
@@ -150,16 +149,16 @@ Spain,ESP,2000,0.482,0.337
 Spain,ESP,2004,0.455,0.322
 Spain,ESP,2007,0.451,0.309
 Spain,ESP,2010,0.513,0.339
-Spain,ESP,1985,,0.315
+Spain,ESP,1985,0,0.315
 Sweden,SWE,1981,0.413,0.198
 Sweden,SWE,1987,0.437,0.213
 Sweden,SWE,1992,0.468,0.229
 Sweden,SWE,1995,0.5,0.222
 Sweden,SWE,2000,0.485,0.257
 Sweden,SWE,2005,0.477,0.239
-Switzerland,CHE,2000,,0.285
-Switzerland,CHE,2002,,0.273
-Switzerland,CHE,2004,,0.268
+Switzerland,CHE,2000,0,0.285
+Switzerland,CHE,2002,0,0.273
+Switzerland,CHE,2004,0,0.268
 United Kingdom,GBR,1979,0.418,0.267
 United Kingdom,GBR,1986,0.509,0.304
 United Kingdom,GBR,1991,0.512,0.34

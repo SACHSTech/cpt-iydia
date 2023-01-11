@@ -1,11 +1,11 @@
 package cpt;
 
-public class Data {
-    String strCountry;
-    String strCode;
-    int intYear;
-    double dblMarket;
-    double dblDisposable;
+public class Data extends DataCollection{
+    private String strCountry;
+    private String strCode;
+    private int intYear;
+    private double dblMarket;
+    private double dblDisposable;
 
     public Data(String strCountry, String strCode, int intYear, double dblMarket, double dblDisposable){
         this.strCountry = strCountry;
@@ -33,5 +33,9 @@ public class Data {
 
     public double getDisposable(){
         return dblDisposable;
+    }
+
+    public String tostring(){
+        return strCountry + "," + strCode + "," + intYear + "," + dblMarket + "," + dblDisposable;
     }
 }
