@@ -5,8 +5,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.layout.GridPane;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.LineChart;
 
@@ -15,8 +17,13 @@ public class Main extends Application {
     private LineChart chart;
     private NumberAxis xAxis;
     private NumberAxis yAxis;
+    
 
     public Parent createContent() {
+        GridPane grid = new GridPane();
+        grid.setAlignment(Pos.CENTER);
+        //grid.setGridLinesVisible(true);
+
         int[] years = {1981, 1985, 1989, 1995, 2001, 2003, 2008, 2010};
 
         xAxis = new NumberAxis("Years", years[0], years[7], 10d);
