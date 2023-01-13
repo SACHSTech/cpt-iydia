@@ -36,6 +36,6 @@ public class Data extends DataCollection{
     }
 
     public String tostring(){
-        return strCountry + "," + strCode + "," + intYear + "," + dblMarket + "," + dblDisposable;
+        return this.strCountry + "," + this.strCode + "," + this.intYear + "," + this.dblMarket + "," + this.dblDisposable;
     }
 }
