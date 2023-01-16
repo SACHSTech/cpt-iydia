@@ -16,10 +16,8 @@ public class DataCollection{
     
             Data elements = new Data(records[0], records[1], Integer.parseInt(records[2]), Double.parseDouble(records[3]), Double.parseDouble(records[4]));
             data.add(elements);
-            //System.out.println(elements.toString());
-            //System.out.println(strCountry + "," + strCode + "," + intYear + "," + dblMarket + "," + dblDisposable);
+            System.out.println(elements.toString());
         }
-        //System.out.println(data);
         file.close();
     }
 }

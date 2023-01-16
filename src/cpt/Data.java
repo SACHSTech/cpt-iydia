@@ -35,7 +35,7 @@ public class Data extends DataCollection{
         return dblDisposable;
     }
 
-    public String tostring(){
+    public String toString(){
         return this.strCountry + "," + this.strCode + "," + this.intYear + "," + this.dblMarket + "," + this.dblDisposable;
     }
 }

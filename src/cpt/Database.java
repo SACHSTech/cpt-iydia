@@ -73,7 +73,7 @@ public class Database extends Application{
                 System.out.println("Bar Chart Pressed");
 
                 Text test = new Text("Bar Chart Page");
-                grid.add(test, 1, 3, 1, 1);
+                grid.add(test, 1, 2, 1, 1);
             }
         });
 
