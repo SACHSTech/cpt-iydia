@@ -1,85 +1,76 @@
 package cpt;
 
-import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.stage.Stage;
+import javafx.event.EventHandler;
+import javafx.geometry.Side;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.layout.GridPane;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.TabPane.TabClosingPolicy;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import javafx.stage.Stage;
 
-public class Database extends Application{
+import java.io.InputStream;
+
+public class Database extends Application {
+
+    private TabPane tabPane;
+    private Tab lineChart;
+    private Tab barChart;
+
+    public Parent createContent() {
+        //Each tab illustrates different capabilities
+        tabPane = new TabPane();
+        tabPane.setSide(Side.LEFT);
+        tabPane.setPrefSize(400, 360);
+        tabPane.setMinSize(TabPane.USE_PREF_SIZE, TabPane.USE_PREF_SIZE);
+        tabPane.setMaxSize(TabPane.USE_PREF_SIZE, TabPane.USE_PREF_SIZE);
+        lineChart = new Tab();
+        barChart = new Tab();
+
+        tabPane.setRotateGraphic(false);
+        // Makes tabs uncloseable
+        tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE); 
+        tabPane.setSide(Side.TOP);
+        final VBox vbox = new VBox();
+        vbox.setSpacing(10);
+        vbox.setTranslateX(10);
+        vbox.setTranslateY(10);
+
+        // Line Chart Tab
+        lineChart.setText("Line Chart");
+        lineChart.setContent(vbox); // i have no idea what this does
+        tabPane.getTabs().add(lineChart);
+        
+        // Bar Chart Tab
+        barChart.setText("Bar Chart");
+        barChart.setContent(vbox);
+        tabPane.getTabs().add(barChart);
+        return tabPane;
+    }
+
+    @Override public void start(Stage primaryStage) throws Exception {
+        primaryStage.setScene(new Scene(createContent()));
+        primaryStage.show();
+    }
+
     /**
+     * Java main for when running without JavaFX launcher
      * @param args command line arguments
      */
     public static void main(String[] args) {
         launch(args);
     }
-
-    @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Income Inequality Database");
-
-        GridPane grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setGridLinesVisible(false);
-
-        Menu home = new Menu("Home");
-        Menu charts = new Menu("Charts");
-
-        MenuItem lineChart = new MenuItem("Line Chart");
-        MenuItem barChart = new MenuItem("Bar Chart");
-        
-        charts.getItems().add(lineChart);
-        charts.getItems().add(barChart);
-
-        MenuBar menuBar = new MenuBar();
-        menuBar.getMenus().add(home);
-        menuBar.getMenus().add(charts);
-
-        grid.add(menuBar, 0, 0, 2, 1); //(columnIndex, rowIndex, columnSpan, rowSpan)
-        
-        lineChart.setOnAction(new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Line Chart Pressed");
-                
-                    Text scenetitle = new Text("Welcome");
-                    scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-                    grid.add(scenetitle, 1, 1, 1, 1);
-    
-                    Label userName = new Label("Line Chart Page");
-                    grid.add(userName, 1, 2);
-            }
-        });
-
-        barChart.setOnAction(new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Bar Chart Pressed");
-
-                Text test = new Text("Bar Chart Page");
-                grid.add(test, 1, 2, 1, 1);
-            }
-        });
-
-        Scene scene = new Scene(grid, 960, 600);
-
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }    
 }
