@@ -2,17 +2,15 @@ package cpt;
 
 public class Data extends DataCollection{
     private String strCountry;
-    private String strCode;
+    private String strCountryCode;
     private int intYear;
-    private double dblMarket;
-    private double dblDisposable;
+    private int intAnnualGrowth;
 
-    public Data(String strCountry, String strCode, int intYear, double dblMarket, double dblDisposable){
+    public Data(String strCountry, String strCode, int intYear, int intAnnualGrowth){
         this.strCountry = strCountry;
-        this.strCode = strCode;
+        this.strCountryCode = strCode;
         this.intYear = intYear;
-        this.dblMarket = dblMarket;
-        this.dblDisposable = dblDisposable;
+        this.intAnnualGrowth = intAnnualGrowth;
     }
 
     public String getCountry(){
@@ -20,22 +18,18 @@ public class Data extends DataCollection{
     }
 
     public String getCode(){
-        return strCode;
+        return strCountryCode;
     }
 
     public int getYear(){
         return intYear;
     }
 
-    public double getMarket(){
-        return dblMarket;
-    }
-
-    public double getDisposable(){
-        return dblDisposable;
+    public double getAnnualGrowth(){
+        return intAnnualGrowth;
     }
 
     public String toString(){
-        return this.strCountry + "," + this.strCode + "," + this.intYear + "," + this.dblMarket + "," + this.dblDisposable;
+        return this.strCountry + "," + this.strCountryCode + "," + this.intYear + "," + this.intAnnualGrowth;
     }
 }
