@@ -11,6 +11,14 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.layout.GridPane;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.LineChart;
+import javafx.application.Application;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+import javafx.stage.Stage;
 
 public class TemporaryLineChart extends Application {
 
@@ -18,7 +26,6 @@ public class TemporaryLineChart extends Application {
     private NumberAxis xAxis;
     private NumberAxis yAxis;
     
-
     public Parent createContent() {
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -55,6 +62,32 @@ public class TemporaryLineChart extends Application {
         );
         chart = new LineChart(xAxis, yAxis, areaChartData);
         return chart;
+    }
+
+    private static final String[] CATEGORIES = {"Alpha", "Beta", "RC1", "RC2", "1.0", "1.1"};
+    private LineChart<String, Number> chart1;
+    private CategoryAxis xAxis1;
+    private NumberAxis yAxis1;
+
+    public Parent createContent1() {
+        xAxis1 = new CategoryAxis();
+        yAxis1 = new NumberAxis();
+        chart1 = new LineChart<>(xAxis1, yAxis1);
+        // setup chart
+        chart1.setTitle("LineChart with Category Axis");
+        xAxis1.setLabel("X Axis");
+        yAxis1.setLabel("Y Axis");
+        // add starting data
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("Data Series 1");
+        series.getData().add(new XYChart.Data<String, Number>(CATEGORIES[0], 50d));
+        series.getData().add(new XYChart.Data<String, Number>(CATEGORIES[1], 80d));
+        series.getData().add(new XYChart.Data<String, Number>(CATEGORIES[2], 90d));
+        series.getData().add(new XYChart.Data<String, Number>(CATEGORIES[3], 30d));
+        series.getData().add(new XYChart.Data<String, Number>(CATEGORIES[4], 122d));
+        series.getData().add(new XYChart.Data<String, Number>(CATEGORIES[5], 10d));
+        chart1.getData().add(series);
+        return chart1;
     }
 
     @Override public void start(Stage primaryStage) throws Exception {

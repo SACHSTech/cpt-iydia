@@ -34,5 +34,6 @@ public class DataCollection{
                 System.out.println(dataByCountry.toString());
             }
         }
+        file.close();
     }
 }
