@@ -34,7 +34,7 @@ public class Database extends Application {
         //Each tab illustrates different capabilities
         tabPane = new TabPane();
         tabPane.setSide(Side.LEFT);
-        tabPane.setPrefSize(400, 360);
+        tabPane.setPrefSize(900, 650);
         tabPane.setMinSize(TabPane.USE_PREF_SIZE, TabPane.USE_PREF_SIZE);
         tabPane.setMaxSize(TabPane.USE_PREF_SIZE, TabPane.USE_PREF_SIZE);
         lineChart = new Tab();
