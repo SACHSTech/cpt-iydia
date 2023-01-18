@@ -40,24 +40,12 @@ public class TemporaryLineChart extends Application {
             new LineChart.Series("Disposable Income",
             FXCollections.observableArrayList(
                 new LineChart.Data(years[0], 0.282),
-                new LineChart.Data(years[1], 0.293),
-                new LineChart.Data(years[2], 0.304),
-                new LineChart.Data(years[3], 0.311),
-                new LineChart.Data(years[4], 0.32),
-                new LineChart.Data(years[5], 0.316),
-                new LineChart.Data(years[6], 0.336),
-                new LineChart.Data(years[7], 0.334)
+                new LineChart.Data(years[1], 0.293)
             )),
             new LineChart.Series("Market Income",
             FXCollections.observableArrayList(
                 new LineChart.Data(years[0], 0.405),
-                new LineChart.Data(years[1], 0.44),
-                new LineChart.Data(years[2], 0.44),
-                new LineChart.Data(years[3], 0.483),
-                new LineChart.Data(years[4], 0.498),
-                new LineChart.Data(years[5], 0.487),
-                new LineChart.Data(years[6], 0.491),
-                new LineChart.Data(years[7], 0.492)
+                new LineChart.Data(years[1], 0.44)
             ))
         );
         chart = new LineChart(xAxis, yAxis, areaChartData);
