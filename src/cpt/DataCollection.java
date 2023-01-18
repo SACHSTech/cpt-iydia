@@ -4,36 +4,20 @@ import java.io.*;
 import java.util.*;
 
 public class DataCollection{
-    static ArrayList<Data> byCountry = new ArrayList<Data>();
-    static int[] filteredRows;
 
     public static void main(String[] args) throws IOException{
-        BufferedReader file = new BufferedReader(new FileReader("src/cpt/income-inequality-before-and-after-taxes.csv"));
+        BufferedReader file = new BufferedReader(new FileReader("src/cpt/annual-population-growth.csv"));
+        int fileLength = 150;
+        
         ArrayList<Data> data = new ArrayList<Data>();
 
-        for(int i = 0; i < 180; i++){
-            String[] records = file.readLine().split(",");
+        for(int i = 0; i < fileLength; i++){
+            String[] elements = file.readLine().split(",");
     
-            Data elements = new Data(records[0], records[1], Integer.parseInt(records[2]), Double.parseDouble(records[3]), Double.parseDouble(records[4]));
-            data.add(elements);
-            //System.out.println(elements.toString());
-            filterByCountry("Canada");
+            data.add(new Data(elements[0], elements[1], Integer.parseInt(elements[2]), Integer.parseInt(elements[3])));
+            //System.out.println(records.toString());
         }
-        file.close();
-    }
-
-    public static void filterByCountry(String strCountry) throws IOException{
-        BufferedReader file = new BufferedReader(new FileReader("src/cpt/income-inequality-before-and-after-taxes.csv"));
-
-        for(int i = 0; i < 180; i++){
-            String[] records = file.readLine().split(",");
-
-            if(records[0].equals(strCountry)){
-                Data dataByCountry = new Data(records[0], records[1], Integer.parseInt(records[2]), Double.parseDouble(records[3]), Double.parseDouble(records[4]));
-                //byCountry.add(dataByCountry);
-                System.out.println(dataByCountry.toString());
-            }
-        }
+        System.out.println(data.toString());
         file.close();
     }
 }
