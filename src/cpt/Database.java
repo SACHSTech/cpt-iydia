@@ -35,7 +35,7 @@ public class Database extends Application {
     private NumberAxis xAxis2;
     private NumberAxis yAxis2;
 
-    DataCollection collection = new DataCollection();
+    //DataCollection collection = new DataCollection();
 
     public Parent createContent() {
         //Each tab illustrates different capabilities
