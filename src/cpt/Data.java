@@ -25,7 +25,7 @@ public class Data extends DataCollection{
         return intYear;
     }
 
-    public double getAnnualGrowth(){
+    public int getAnnualGrowth(){
         return intAnnualGrowth;
     }
 

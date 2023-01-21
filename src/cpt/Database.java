@@ -10,27 +10,32 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Pos;
 import javafx.scene.chart.NumberAxis;
-import javafx.scene.layout.GridPane;
-import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.chart.CategoryAxis;
+import javafx.scene.control.CheckBox;
+import javafx.scene.chart.ScatterChart;
+import javafx.scene.chart.XYChart.Data;
+import javafx.scene.chart.XYChart.Series;
 
 public class Database extends Application {
 
+    // tabpane
     private TabPane tabPane;
-    private Tab lineChart;
-    private Tab barChart;
+    private Tab tab1;
+    private Tab tab2;
     
-    private LineChart chart;
-    private NumberAxis xAxis;
-    private NumberAxis yAxis;
-    private static final String[] CATEGORIES = {"Alpha", "Beta", "RC1", "RC2", "1.0", "1.1"};
-    private LineChart<String, Number> chart1;
-    private CategoryAxis xAxis1;
+    // tab1 stuff
+    private LineChart chart1;
+    private NumberAxis xAxis1;
     private NumberAxis yAxis1;
+
+    // tab2 stuff
+    private ScatterChart chart2;
+    private NumberAxis xAxis2;
+    private NumberAxis yAxis2;
+
+    DataCollection collection = new DataCollection();
 
     public Parent createContent() {
         //Each tab illustrates different capabilities
@@ -39,8 +44,10 @@ public class Database extends Application {
         tabPane.setPrefSize(900, 650);
         tabPane.setMinSize(TabPane.USE_PREF_SIZE, TabPane.USE_PREF_SIZE);
         tabPane.setMaxSize(TabPane.USE_PREF_SIZE, TabPane.USE_PREF_SIZE);
-        lineChart = new Tab();
-        barChart = new Tab();
+
+        // Make tabs
+        tab1 = new Tab();
+        tab2 = new Tab();
 
         tabPane.setRotateGraphic(false);
         // Makes tabs uncloseable
@@ -52,65 +59,79 @@ public class Database extends Application {
         vbox.setTranslateY(10);
 
         // Line Chart Tab
-        lineChart.setText("Line Chart");
-        lineChart.setContent(vbox);
-        final VBox vboxLineChart = new VBox();
-        vboxLineChart.setSpacing(10);
-        //vboxLineChart.setTranslateX(0);
-        vboxLineChart.setTranslateY(10);
+        tab1.setText("Line Chart");
+        tab1.setContent(vbox);
+        // Mini vbox
+        final VBox vboxTab1 = new VBox();
+        vboxTab1.setSpacing(10);
+        vboxTab1.setTranslateX(10);
+        vboxTab1.setTranslateY(10);
             
-        xAxis1 = new CategoryAxis();
-        yAxis1 = new NumberAxis();
-        chart1 = new LineChart<>(xAxis1, yAxis1);
-        // setup chart
-        chart1.setTitle("LineChart with Category Axis");
-        xAxis1.setLabel("X Axis");
-        yAxis1.setLabel("Y Axis");
-        // add starting data
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.setName("Data Series 1");
-        series.getData().add(new XYChart.Data<String, Number>(CATEGORIES[0], 50d));
-        series.getData().add(new XYChart.Data<String, Number>(CATEGORIES[1], 80d));
-        series.getData().add(new XYChart.Data<String, Number>(CATEGORIES[2], 90d));
-        series.getData().add(new XYChart.Data<String, Number>(CATEGORIES[3], 30d));
-        series.getData().add(new XYChart.Data<String, Number>(CATEGORIES[4], 122d));
-        series.getData().add(new XYChart.Data<String, Number>(CATEGORIES[5], 10d));
-        chart1.getData().add(series);
-    
-        vboxLineChart.getChildren().add(chart1);
-        lineChart.setContent(vboxLineChart);
-        tabPane.getTabs().add(lineChart);
+        xAxis1 = new NumberAxis("Values for X-Axis", 0, 3, 1);
+        yAxis1 = new NumberAxis("Values for Y-Axis", 0, 3, 1);
+        ObservableList<XYChart.Series<Double,Double>> lineChartData =
+            FXCollections.observableArrayList(
+                new LineChart.Series<>("Series 1",
+                                       FXCollections.observableArrayList(
+                    new XYChart.Data<>(0.0, 1.0),
+                    new XYChart.Data<>(1.2, 1.4),
+                    new XYChart.Data<>(2.2, 1.9),
+                    new XYChart.Data<>(2.7, 2.3),
+                    new XYChart.Data<>(2.9, 0.5))),
+                new LineChart.Series<>("Series 2",
+                                       FXCollections.observableArrayList(
+                    new XYChart.Data<>(0.0, 1.6),
+                    new XYChart.Data<>(0.8, 0.4),
+                    new XYChart.Data<>(1.4, 2.9),
+                    new XYChart.Data<>(2.1, 1.3),
+                    new XYChart.Data<>(2.6, 0.9)))
+            );
+        chart1 = new LineChart(xAxis1, yAxis1, lineChartData);
 
+        // Add all the stuff to the tabpane
+        vboxTab1.getChildren().addAll(chart1);
+        tab1.setContent(vboxTab1);
+        tabPane.getTabs().add(tab1);
+        
         // Bar Chart Tab
-        barChart.setText("Bar Chart");
-        barChart.setContent(vbox);
-        final VBox vboxBarChart = new VBox();
-        vboxBarChart.setSpacing(10);
-        //vboxBarChart.setTranslateX(0);
-        vboxBarChart.setTranslateY(10);
+        tab2.setText("Bar Chart");
+        tab2.setContent(vbox);
+        // Mini Vbox
+        final VBox vboxTab2 = new VBox();
+        vboxTab2.setSpacing(10);
+        vboxTab2.setTranslateX(10);
+        vboxTab2.setTranslateY(10);
 
-        int[] years = {1981, 1985, 1989, 1995, 2001, 2003, 2008, 2010};
+        xAxis2 = new NumberAxis("X-Axis", 0d, 8.0d, 1.0d);
+        yAxis2 = new NumberAxis("Y-Axis", 0.0d, 5.0d, 1.0d);
+        final Series<Number, Number> series = new Series<>();
+        series.setName("Series 1");
+        series.getData().addAll(new Data(0.2, 3.5),
+                                new Data(0.7, 4.6),
+                                new Data(1.8, 1.7),
+                                new Data(2.1, 2.8),
+                                new Data(4.0, 2.2),
+                                new Data(4.1, 2.6),
+                                new Data(4.5, 2.0),
+                                new Data(6.0, 3.0),
+                                new Data(7.0, 2.0),
+                                new Data(7.8, 4.0));
+        chart2 = new ScatterChart(xAxis2, yAxis2);
+        chart2.getData().add(series);
 
-        xAxis = new NumberAxis("Years", years[0], years[7], 10d);
-        yAxis = new NumberAxis("Y-Axis", 0.0d, 1.0d, 0.2d);
+        // Add all the stuff to the tabpane
+        vboxTab2.getChildren().addAll(chart2);
+        tab2.setContent(vboxTab2);
+        tabPane.getTabs().add(tab2);
 
-        ObservableList<AreaChart.Series> areaChartData = FXCollections.observableArrayList(
-            new LineChart.Series("Disposable Income",
-            FXCollections.observableArrayList(
-                new LineChart.Data(years[0], 0.282),
-                new LineChart.Data(years[1], 0.293)
-            )),
-            new LineChart.Series("Market Income",
-            FXCollections.observableArrayList(
-                new LineChart.Data(years[0], 0.405),
-                new LineChart.Data(years[1], 0.44)
-            ))
-        );
-        chart = new LineChart(xAxis, yAxis, areaChartData);
+        // Checkboxes
+        CheckBox cb1 = new CheckBox("Show predicted population changes");
+        CheckBox cb2 = new CheckBox("Show predicted population changes");
+        vboxTab1.getChildren().add(cb1);
+        vboxTab2.getChildren().add(cb2);
 
-        vboxBarChart.getChildren().add(chart);
-        barChart.setContent(vboxBarChart);
-        tabPane.getTabs().add(barChart);
+        if(cb1.isSelected()){
+        }
 
         return tabPane;
     }
