@@ -3,26 +3,56 @@ package cpt;
 import java.io.*;
 import java.util.*;
 
-public class DataCollection{
-    ArrayList<Data> data = new ArrayList<Data>();
+public class DataCollection {
+    private int fileLength = 150;
 
-    public DataCollection(){
+    ArrayList<Data> data;
 
-        try (BufferedReader file = new BufferedReader(new FileReader("src/cpt/annual-population-growth.csv"))) {
-            int fileLength = 150;
+    public DataCollection() {
 
-            for(int i = 0; i < fileLength; i++){
+    }
+    
+    public ArrayList<Data> getAllData(){
+        try {
+            BufferedReader file = new BufferedReader(new FileReader("src/cpt/annual-population-growth.csv"));
+
+            ArrayList<Data> data = new ArrayList<Data>();
+
+            for(int j = 0; j < fileLength; j++){
                 String[] elements = file.readLine().split(",");
-                Data records = new Data(elements[0], elements[1], Integer.parseInt(elements[2]), Integer.parseInt(elements[3]));
+                Data records = new Data(Integer.parseInt(elements[2]), Integer.parseInt(elements[3]));
                 data.add(records);
             }
+            this.data = data;
             file.close();
-        } catch (NumberFormatException | IOException e) {
+        } catch(IOException e){
             e.printStackTrace();
         }
+
+        return data;
     }
 
-    public ArrayList<Data> getData(){
+    public ArrayList<Data> getEmpiricalData(int intThisYear){
+        try {
+            BufferedReader file = new BufferedReader(new FileReader("src/cpt/annual-population-growth.csv"));
+
+            ArrayList<Data> data = new ArrayList<Data>();
+
+            for(int j = 0; j < fileLength; j++){
+                String[] elements = file.readLine().split(",");
+                Data records = new Data(Integer.parseInt(elements[2]), Integer.parseInt(elements[3]));
+                data.add(records);
+            }
+            this.data = data;
+            file.close();
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+
         return data;
+    }
+
+    public int getFileLength(){
+        return fileLength;
     }
 }

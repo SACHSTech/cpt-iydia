@@ -3,6 +3,8 @@ package cpt;
 import javafx.application.Application;
 import javafx.geometry.Side;
 import javafx.scene.Parent;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -35,9 +37,10 @@ public class Database extends Application {
     private NumberAxis xAxis2;
     private NumberAxis yAxis2;
 
-    //DataCollection collection = new DataCollection();
-
     public Parent createContent() {
+        DataCollection collection = new DataCollection();
+        int intThisYear = 2023;
+
         //Each tab illustrates different capabilities
         tabPane = new TabPane();
         tabPane.setSide(Side.LEFT);
@@ -56,19 +59,23 @@ public class Database extends Application {
         final VBox vbox = new VBox();
         vbox.setSpacing(10);
         vbox.setTranslateX(10);
-        vbox.setTranslateY(10);
+        vbox.setTranslateY(10);        
 
-        // Line Chart Tab
+        // Tab1 set content
         tab1.setText("Line Chart");
         tab1.setContent(vbox);
-        // Mini vbox
         final VBox vboxTab1 = new VBox();
         vboxTab1.setSpacing(10);
         vboxTab1.setTranslateX(10);
         vboxTab1.setTranslateY(10);
             
-        xAxis1 = new NumberAxis("Values for X-Axis", 0, 3, 1);
-        yAxis1 = new NumberAxis("Values for Y-Axis", 0, 3, 1);
+        // Tab1 checkbox
+        CheckBox cb1 = new CheckBox("Show predicted population changes");
+        vboxTab1.getChildren().add(cb1);
+
+        // Tab1 charts
+        xAxis1 = new NumberAxis("Years", collection.getAllData().get(0).getYear(), collection.getAllData().get(73).getYear(), 1);
+        yAxis1 = new NumberAxis("Annual Population Growth", 0, 3, 1);
         ObservableList<XYChart.Series<Double,Double>> lineChartData =
             FXCollections.observableArrayList(
                 new LineChart.Series<>("Series 1",
@@ -92,16 +99,47 @@ public class Database extends Application {
         vboxTab1.getChildren().addAll(chart1);
         tab1.setContent(vboxTab1);
         tabPane.getTabs().add(tab1);
+
+        // Tab1: if checkbox is clicked
+        cb1.setOnAction(new EventHandler<ActionEvent>() {
+            int intCount = 0;
+            @Override
+            public void handle(ActionEvent event) {
+                intCount++;
+                System.out.println(intCount);
+                if(intCount%2==1){
+                    vboxTab1.getChildren().remove(chart1);
+                    xAxis1 = new NumberAxis("Years", collection.getAllData().get(0).getYear(), collection.getAllData().get(149).getYear(), 1);
+                    chart1 = new LineChart(xAxis1, yAxis1, lineChartData);
+
+                    // Add all the stuff to the tabpane
+                    vboxTab1.getChildren().addAll(chart1);
+                    tab1.setContent(vboxTab1);
+                } else if(intCount%2==0){
+                    vboxTab1.getChildren().remove(chart1);
+                    xAxis1 = new NumberAxis("Years", collection.getAllData().get(0).getYear(), collection.getAllData().get(73).getYear(), 1);
+                    chart1 = new LineChart(xAxis1, yAxis1, lineChartData);
+
+                    // Add all the stuff to the tabpane
+                    vboxTab1.getChildren().addAll(chart1);
+                    tab1.setContent(vboxTab1);
+                }
+            }
+        });
         
-        // Bar Chart Tab
-        tab2.setText("Bar Chart");
+        // Tab2 Set Content
+        tab2.setText("Scatter Plot");
         tab2.setContent(vbox);
-        // Mini Vbox
         final VBox vboxTab2 = new VBox();
         vboxTab2.setSpacing(10);
         vboxTab2.setTranslateX(10);
         vboxTab2.setTranslateY(10);
 
+        // Tab2 Checkbox
+        CheckBox cb2 = new CheckBox("Show predicted population changes");
+        vboxTab2.getChildren().add(cb2);
+
+        // Tab2 Charts
         xAxis2 = new NumberAxis("X-Axis", 0d, 8.0d, 1.0d);
         yAxis2 = new NumberAxis("Y-Axis", 0.0d, 5.0d, 1.0d);
         final Series<Number, Number> series = new Series<>();
@@ -124,15 +162,6 @@ public class Database extends Application {
         tab2.setContent(vboxTab2);
         tabPane.getTabs().add(tab2);
 
-        // Checkboxes
-        CheckBox cb1 = new CheckBox("Show predicted population changes");
-        CheckBox cb2 = new CheckBox("Show predicted population changes");
-        vboxTab1.getChildren().add(cb1);
-        vboxTab2.getChildren().add(cb2);
-
-        if(cb1.isSelected()){
-        }
-
         return tabPane;
     }
 
@@ -147,6 +176,7 @@ public class Database extends Application {
      * @param args command line arguments
      */
     public static void main(String[] args) {
+        
         launch(args);
     }
 }
