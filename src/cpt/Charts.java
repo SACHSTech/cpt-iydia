@@ -23,8 +23,7 @@ public class Charts {
      * Method creates LineChart with integer axis for the filtered dataset of empirical data
      * @return the LineChart for the filtered dataset of empirical data
      */
-    public ObservableList<Series<Integer, Integer>> lineChartCurrent(String strLineChartName) {
-    
+    public ObservableList<Series<Integer, Integer>> lineChartCurrent() {
         ObservableList<XYChart.Data<Integer, Integer>> currentGrowthLineChart = FXCollections.observableArrayList();
 
         for(int i = 0; i <= collection.getCurrentYear(); i++) {
@@ -45,16 +44,27 @@ public class Charts {
      * Method creates LineChart with integer axis for the filtered dataset of future values
      * @return the LineChart for the filtered dataset of future values
      */
-    public LineChart.Series<Integer, Integer> lineChartFuture() {
+    public ObservableList<Series<Integer, Integer>> lineChartFuture() {
+        ObservableList<XYChart.Data<Integer, Integer>> currentGrowthLineChart = FXCollections.observableArrayList();
         ObservableList<XYChart.Data<Integer, Integer>> futureGrowthLineChart = FXCollections.observableArrayList();
+
+        for(int i = 0; i <= collection.getCurrentYear(); i++) {
+            currentGrowthLineChart.add(new XYChart.Data<>(collection.getCurrentData().get(i).getYear(), collection.getCurrentData().get(i).getPopulationGrowth()));
+        }
 
         for(int i = collection.getCurrentYear(); i <= collection.getFileLength(); i++) {
             futureGrowthLineChart.add(new XYChart.Data<>(collection.getData().get(i).getYear(), collection.getData().get(i).getPopulationGrowth()));
         }
 
+        LineChart.Series<Integer, Integer> lineChart = new LineChart.Series<>("Annual Population Growth", currentGrowthLineChart);
         LineChart.Series<Integer, Integer> newLineChart = new LineChart.Series<>("Future Population Growth", futureGrowthLineChart);
 
-        return newLineChart;
+        ObservableList<XYChart.Series<Integer,Integer>> newLineChartData = FXCollections.observableArrayList();
+
+        newLineChartData.add(lineChart);
+        newLineChartData.add(newLineChart);
+
+        return newLineChartData;
     }
 
     /**
