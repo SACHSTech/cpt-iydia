@@ -21,7 +21,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.CheckBox;
 import javafx.scene.chart.ScatterChart;
 
-public class Database extends Application {
+public class DataDisplay extends Application {
 
     // Tabpane
     private TabPane tabPane;
