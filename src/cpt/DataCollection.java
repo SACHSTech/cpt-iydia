@@ -6,19 +6,11 @@ import java.util.*;
 public class DataCollection {
     private int fileLength = 150;
     private int intCurrentYear;
-    private int intSmallestGrowth;
-    private int intLargestGrowth;
 
     ArrayList<Data> data;
     ArrayList<Data> currentData;
 
     int[] annualGrowth;
-
-    /**
-    public DataCollection() {
-
-    }
-    */
     
     public ArrayList<Data> getData(){
         try {
@@ -73,7 +65,7 @@ public class DataCollection {
         return intCurrentYear;
     }
 
-    public int[] sortPopulationGrowth(ArrayList<Data> arr){
+    public int getSmallestGrowth(ArrayList<Data> arr){
         int temp;
         int[] annualGrowth = new int[arr.size()];
 
@@ -90,16 +82,29 @@ public class DataCollection {
                 }  
             }  
         }  
-        intSmallestGrowth = annualGrowth[0];
-        intLargestGrowth = annualGrowth[arr.size()-1];
 
-        return annualGrowth;
+        return annualGrowth[0];
     }
 
-    public int getSmallestGrowth(){
-        return intSmallestGrowth;
+    public int getLargestGrowth(ArrayList<Data> arr){
+        int temp;
+        int[] annualGrowth = new int[arr.size()];
+
+        for(int i = 0; i < arr.size(); i++){
+            annualGrowth[i] = arr.get(i).getPopulationGrowth();
+        }
+
+        for (int i = 0; i < arr.size(); i++){  
+            for (int j = i + 1; j < arr.size(); j++){  
+                if (annualGrowth[i] > annualGrowth[j]){  
+                    temp = annualGrowth[i];  
+                    annualGrowth[i] = annualGrowth[j];  
+                    annualGrowth[j] = temp;  
+                }  
+            }  
+        }  
+
+        return annualGrowth[arr.size()-1];
     }
-    public int getLargestGrowth(){
-        return intLargestGrowth;
-    }
+
 }
