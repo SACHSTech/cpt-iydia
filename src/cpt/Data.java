@@ -2,22 +2,22 @@ package cpt;
 
 public class Data extends DataCollection{
     private int intYear;
-    private int intAnnualGrowth;
+    private int intPopulationGrowth;
 
-    public Data(int intYear, int intAnnualGrowth) {
+    public Data(int intYear, int intPopulationGrowth) {
         this.intYear = intYear;
-        this.intAnnualGrowth = intAnnualGrowth;
+        this.intPopulationGrowth = intPopulationGrowth;
     }
 
     public int getYear(){
         return intYear;
     }
 
-    public int getAnnualGrowth(){
-        return intAnnualGrowth;
+    public int getPopulationGrowth(){
+        return intPopulationGrowth;
     }
 
     public String toString(){
-        return this.intYear + "," + this.intAnnualGrowth;
+        return this.intYear + "," + this.intPopulationGrowth;
     }
 }

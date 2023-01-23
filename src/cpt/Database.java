@@ -29,8 +29,11 @@ public class Database extends Application {
     
     // tab1 stuff
     private LineChart chart1;
+    private LineChart newChart1;
     private NumberAxis xAxis1;
     private NumberAxis yAxis1;
+    private NumberAxis newXAxis1;
+    private NumberAxis newYAxis1;
 
     // tab2 stuff
     private ScatterChart chart2;
@@ -44,7 +47,7 @@ public class Database extends Application {
         //Each tab illustrates different capabilities
         tabPane = new TabPane();
         tabPane.setSide(Side.LEFT);
-        tabPane.setPrefSize(900, 650);
+        tabPane.setPrefSize(900, 700);
         tabPane.setMinSize(TabPane.USE_PREF_SIZE, TabPane.USE_PREF_SIZE);
         tabPane.setMaxSize(TabPane.USE_PREF_SIZE, TabPane.USE_PREF_SIZE);
 
@@ -74,8 +77,8 @@ public class Database extends Application {
         vboxTab1.getChildren().add(cb1);
 
         // Tab1 charts
-        xAxis1 = new NumberAxis("Years", collection.getAllData().get(0).getYear(), collection.getAllData().get(73).getYear(), 1);
-        yAxis1 = new NumberAxis("Annual Population Growth", 0, 3, 1);
+        xAxis1 = new NumberAxis("Years", collection.getData().get(0).getYear(), collection.getCurrentData(intThisYear).get(collection.getCurrentYear()).getYear(), 1);
+        yAxis1 = new NumberAxis("Annual Population Growth", 43808256, 92471810, 1000000);
         ObservableList<XYChart.Series<Double,Double>> lineChartData =
             FXCollections.observableArrayList(
                 new LineChart.Series<>("Series 1",
@@ -109,18 +112,16 @@ public class Database extends Application {
                 System.out.println(intCount);
                 if(intCount%2==1){
                     vboxTab1.getChildren().remove(chart1);
-                    xAxis1 = new NumberAxis("Years", collection.getAllData().get(0).getYear(), collection.getAllData().get(149).getYear(), 1);
-                    chart1 = new LineChart(xAxis1, yAxis1, lineChartData);
+                    newXAxis1 = new NumberAxis("Years", collection.getData().get(0).getYear(), collection.getData().get(collection.getFileLength()).getYear(), 1);
+                    newYAxis1 = new NumberAxis("Annual Population Growth", -10946560, 92471810, 1000000);
+                    newChart1 = new LineChart(newXAxis1, newYAxis1, lineChartData);
 
                     // Add all the stuff to the tabpane
-                    vboxTab1.getChildren().addAll(chart1);
+                    vboxTab1.getChildren().addAll(newChart1);
                     tab1.setContent(vboxTab1);
-                } else if(intCount%2==0){
-                    vboxTab1.getChildren().remove(chart1);
-                    xAxis1 = new NumberAxis("Years", collection.getAllData().get(0).getYear(), collection.getAllData().get(73).getYear(), 1);
-                    chart1 = new LineChart(xAxis1, yAxis1, lineChartData);
 
-                    // Add all the stuff to the tabpane
+                } else if(intCount%2==0){
+                    vboxTab1.getChildren().remove(newChart1);
                     vboxTab1.getChildren().addAll(chart1);
                     tab1.setContent(vboxTab1);
                 }
@@ -176,7 +177,7 @@ public class Database extends Application {
      * @param args command line arguments
      */
     public static void main(String[] args) {
-        
+
         launch(args);
     }
 }
