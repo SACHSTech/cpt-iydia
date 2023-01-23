@@ -5,6 +5,7 @@ import java.util.*;
 
 public class DataCollection {
     private int fileLength = 150;
+    private int intThisYear = 2023;
     private int intCurrentYear;
 
     ArrayList<Data> data;
@@ -42,7 +43,7 @@ public class DataCollection {
      * @param intThisYear the current year (2023)
      * @return the filtered dataset from start to current year
      */
-    public ArrayList<Data> getCurrentData(int intThisYear){
+    public ArrayList<Data> getCurrentData(){
         try {
             BufferedReader file = new BufferedReader(new FileReader("src/cpt/annual-population-growth.csv"));
 
@@ -80,6 +81,10 @@ public class DataCollection {
      */
     public int getCurrentYear(){
         return intCurrentYear;
+    }
+
+    public int getThisYear(){
+        return intThisYear;
     }
 
     /**
