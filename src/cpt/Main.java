@@ -18,7 +18,7 @@ import javafx.scene.text.Text;
 import javafx.scene.control.CheckBox;
 import javafx.scene.chart.ScatterChart;
 
-public class DataDisplay extends Application {
+public class Main extends Application {
 
     // Tabpane
     private TabPane tabPane;
@@ -40,6 +40,8 @@ public class DataDisplay extends Application {
     public Parent createContent() {
         // Create instances of classes
         DataCollection collection = new DataCollection();
+        LineCharts lineChart = new LineCharts();
+        ScatterCharts scatterChart = new ScatterCharts();
 
         // Variables accessed by both tabs
         int intXLowerBound = collection.getData().get(0).getYear();
@@ -87,11 +89,9 @@ public class DataDisplay extends Application {
         CheckBox cb1 = new CheckBox("Show predicted population changes");
 
         // Tab1 Charts   
-        Charts chart = new Charts(
-            new NumberAxis("Years", intXLowerBound, intXUpperBound + intXTickUnit, intXTickUnit), 
-            new NumberAxis("Annual Population Growth", intYLowerBound, intYUpperBound + intYTickUnit, intYTickUnit));   
-
-        chart1 = new LineChart(chart.getXAxis(), chart.getYAxis(), chart.lineChartCurrent());
+        Charts chartTab1 = new Charts(new NumberAxis("Years", intXLowerBound, intXUpperBound + intXTickUnit, intXTickUnit), 
+        new NumberAxis("Annual Population Growth", intYLowerBound, intYUpperBound + intYTickUnit, intYTickUnit));   
+        chart1 = new LineChart(chartTab1.getXAxis(), chartTab1.getYAxis(), lineChart.lineChartCurrent());
 
         // Add Tab1 to tabpane
         vboxTab1.getChildren().addAll(titleTab1, cb1, chart1);
@@ -107,9 +107,9 @@ public class DataDisplay extends Application {
                 if(intCount%2==1){
                     vboxTab1.getChildren().remove(chart1);
 
-                    Charts newChart = new Charts(new NumberAxis("Years", intNewXLowerBound, intNewXUpperBound, intXTickUnit),
+                    Charts newChartTab1 = new Charts(new NumberAxis("Years", intNewXLowerBound, intNewXUpperBound, intXTickUnit),
                     new NumberAxis("Annual Population Growth", intNewYLowerBound, intNewYUpperBound + intYTickUnit, intYTickUnit));
-                    newChart1 = new LineChart(newChart.getXAxis(), newChart.getYAxis(), newChart.lineChartFuture());
+                    newChart1 = new LineChart(newChartTab1.getXAxis(), newChartTab1.getYAxis(), lineChart.lineChartFuture());
 
                     vboxTab1.getChildren().add(newChart1);
                     tab1.setContent(vboxTab1);
@@ -139,8 +139,8 @@ public class DataDisplay extends Application {
         CheckBox cb2 = new CheckBox("Show predicted population changes");
 
         // Tab2 Charts    
-        Charts scatterChart = new Charts(new NumberAxis("Years", intXLowerBound, intXUpperBound + intXTickUnit, intXTickUnit), new NumberAxis("Annual Population Growth", intYLowerBound, intYUpperBound + intYTickUnit, intYTickUnit));
-        chart2 = new ScatterChart(scatterChart.getXAxis(), scatterChart.getYAxis());
+        Charts chartTab2 = new Charts(new NumberAxis("Years", intXLowerBound, intXUpperBound + intXTickUnit, intXTickUnit), new NumberAxis("Annual Population Growth", intYLowerBound, intYUpperBound + intYTickUnit, intYTickUnit));
+        chart2 = new ScatterChart(chartTab2.getXAxis(), chartTab2.getYAxis());
         chart2.getData().add(scatterChart.scatterChartCurrent());
 
         // Add Tab2 to tabpane
@@ -157,11 +157,10 @@ public class DataDisplay extends Application {
                 if(intCount%2==1){
                     vboxTab2.getChildren().remove(chart2);
 
-                    Charts newScatterChart = new Charts(new NumberAxis("Years", intNewXLowerBound, intNewXUpperBound, intXTickUnit),
+                    Charts newChartTab2 = new Charts(new NumberAxis("Years", intNewXLowerBound, intNewXUpperBound, intXTickUnit),
                     new NumberAxis("Annual Population Growth", intNewYLowerBound, intNewYUpperBound + intYTickUnit, intYTickUnit));
-                    
-                    newChart2 = new ScatterChart(newScatterChart.getXAxis(), newScatterChart.getYAxis());
-                    newChart2.getData().addAll(newScatterChart.scatterChartCurrent(), newScatterChart.scatterChartFuture());
+                    newChart2 = new ScatterChart(newChartTab2.getXAxis(), newChartTab2.getYAxis());
+                    newChart2.getData().addAll(scatterChart.scatterChartCurrent(), scatterChart.scatterChartFuture());
 
                     vboxTab2.getChildren().add(newChart2);
                     tab2.setContent(vboxTab2);
@@ -174,7 +173,6 @@ public class DataDisplay extends Application {
                 }
             }
         });
-
         return tabPane;
     }
 
@@ -191,5 +189,4 @@ public class DataDisplay extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
 }
