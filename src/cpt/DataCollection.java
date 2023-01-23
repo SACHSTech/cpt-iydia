@@ -12,6 +12,10 @@ public class DataCollection {
 
     int[] annualGrowth;
     
+    /**
+     * Method that reads CSV file and tracks its records and elements of each record
+     * @return arraylist that represents all records of the CSV file
+     */
     public ArrayList<Data> getData(){
         try {
             BufferedReader file = new BufferedReader(new FileReader("src/cpt/annual-population-growth.csv"));
@@ -33,6 +37,11 @@ public class DataCollection {
         return data;
     }
 
+    /**
+     * Method takes in current year and creates new arraylist with data from start to current year 
+     * @param intThisYear the current year (2023)
+     * @return the filtered dataset from start to current year
+     */
     public ArrayList<Data> getCurrentData(int intThisYear){
         try {
             BufferedReader file = new BufferedReader(new FileReader("src/cpt/annual-population-growth.csv"));
@@ -57,14 +66,27 @@ public class DataCollection {
         return currentData;
     }
 
+    /**
+     * Getter method for the length of the file
+     * @return the length of the file
+     */
     public int getFileLength(){
         return fileLength-1;
     }
 
+    /**
+     * Getter method for the file line of current year
+     * @return the file line of current year
+     */
     public int getCurrentYear(){
         return intCurrentYear;
     }
 
+    /**
+     * Method that creates a filtered list of only population growth data from arraylist arr and searches for the smallest number 
+     * @param arr the arraylist that is filtered and searched
+     * @return the smallest number in the arraylist
+     */
     public int getSmallestGrowth(ArrayList<Data> arr){
         int temp;
         int[] annualGrowth = new int[arr.size()];
@@ -86,6 +108,11 @@ public class DataCollection {
         return annualGrowth[0];
     }
 
+    /**
+     * Method that creates a filtered list of only population growth data from arraylist arr and searches for the largest number 
+     * @param arr the arraylist that is filtered and searched
+     * @return the largest number in the arraylist
+     */
     public int getLargestGrowth(ArrayList<Data> arr){
         int temp;
         int[] annualGrowth = new int[arr.size()];

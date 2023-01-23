@@ -39,17 +39,17 @@ public class DataDisplay extends Application {
     // Tab2 Variables
     private ScatterChart chart2;
     private ScatterChart newChart2;
-    private ScatterChart newerChart2;
     private NumberAxis xAxis2;
     private NumberAxis yAxis2;
     private NumberAxis newXAxis2;
     private NumberAxis newYAxis2;
-    private NumberAxis newerXAxis2;
-    private NumberAxis newerYAxis2;
 
     public Parent createContent() {
+        // Create instances of classes
         DataCollection collection = new DataCollection();
         Charts chart = new Charts();
+
+        // Variables accessed by both tabs
         int intThisYear = 2023;
         int intXLowerBound = collection.getData().get(0).getYear();
         int intXUpperBound = collection.getCurrentData(intThisYear).get(collection.getCurrentYear()).getYear();
@@ -131,6 +131,7 @@ public class DataDisplay extends Application {
                     vboxTab1.getChildren().add(newChart1);
                     tab1.setContent(vboxTab1);
 
+                // If checkbox is unclicked
                 } else if(intCount%2==0){
                     vboxTab1.getChildren().remove(newChart1);
                     vboxTab1.getChildren().add(chart1);
@@ -183,6 +184,7 @@ public class DataDisplay extends Application {
                     vboxTab2.getChildren().add(newChart2);
                     tab2.setContent(vboxTab2);
 
+                // If checkbox is unclicked
                 } else if(intCount%2==0){
                     vboxTab2.getChildren().remove(newChart2);
                     vboxTab2.getChildren().add(chart2);

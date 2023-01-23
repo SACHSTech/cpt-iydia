@@ -11,6 +11,10 @@ public class Charts {
     private DataCollection collection = new DataCollection();
     private int intThisYear = 2023;
 
+    /**
+     * Method creates LineChart with integer axis for the filtered dataset of empirical data
+     * @return the LineChart for the filtered dataset of empirical data
+     */
     public LineChart.Series<Integer, Integer> currentGrowthLineChart() {
         ObservableList<XYChart.Data<Integer, Integer>> currentGrowthLineChart = FXCollections.observableArrayList();
 
@@ -23,6 +27,10 @@ public class Charts {
         return lineChart;
     }
 
+    /**
+     * Method creates LineChart with integer axis for the filtered dataset of future values
+     * @return the LineChart for the filtered dataset of future values
+     */
     public LineChart.Series<Integer, Integer> futureGrowthLineChart() {
         ObservableList<XYChart.Data<Integer, Integer>> futureGrowthLineChart = FXCollections.observableArrayList();
 
@@ -35,6 +43,10 @@ public class Charts {
         return newLineChart;
     }
 
+    /**
+     * Method creates ScatterChart with integer axis for the filtered dataset of empirical data
+     * @return the ScatterChart for the filtered dataset of empirical data
+     */
     public ScatterChart.Series<Integer, Integer> currentGrowthScatterPlot(){
         final Series<Integer, Integer> currentGrowthScatterPlot = new Series<>();
         currentGrowthScatterPlot.setName("Annual Population Growth");
@@ -46,6 +58,10 @@ public class Charts {
         return currentGrowthScatterPlot;
     }
 
+    /**
+     * Method creates ScatterChart with integer axis for the filtered dataset of future values
+     * @return the ScatterChart for the filtered dataset of future values
+     */
     public ScatterChart.Series<Integer, Integer> futureGrowthScatterPlot(){
         final Series<Integer, Integer> futureGrowthScatterPlot = new Series<>();
         futureGrowthScatterPlot.setName("Future Population Growth");
