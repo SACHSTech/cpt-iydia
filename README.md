@@ -8,6 +8,6 @@ The data modelled in this CPT is representative of changes in world population b
 ## Why I Chose This Dataset
 Changes in population are accompanied by a variety of causes and therefore results, and it is important to visualize these changes. Within the next 100 years, this data predicts world population will stop increasing and instead begin decreasing, around the year 2080. 
 
-[Link to Course Connections Video](https://drive.google.com/file/d/16b3R9616f94I7eMbEFqBHJIh8oTGa2Pi/view?usp=sharing)
+[Link to Demo Video](https://drive.google.com/file/d/16b3R9616f94I7eMbEFqBHJIh8oTGa2Pi/view?usp=sharing)
  
 [Link to Code Walkthrough Video](https://drive.google.com/file/d/1CKeEQHeuvCE700-w6SnIw19nyzmZD4eK/view?usp=sharing)
