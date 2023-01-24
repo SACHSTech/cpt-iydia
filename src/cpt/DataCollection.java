@@ -83,6 +83,10 @@ public class DataCollection {
         return intCurrentYear;
     }
 
+    /**
+     * Getter method for this year
+     * @return the current year
+     */
     public int getThisYear(){
         return intThisYear;
     }

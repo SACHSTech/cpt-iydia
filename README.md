@@ -2,6 +2,11 @@
 # ICS4U CPT - Data Interaction and Visualization - Lydia He
 [Link to data set](https://ourworldindata.org/grapher/population-growth-the-annual-change-of-the-population)
 
-The data modelled in this CPT is representative of the annual changes in world population. Growth is determined by population change, whether positive or negative. With user interaction, data for prospected population growth for years after 2023 can also be modelled. Changes in population are accompanied by a variety of causes and therefore results, and it is important to visualize these changes. Within the next 100 years, this data predicts world population will stop rising and instead begin decreasing. 
+## Description of Data
+The data modelled in this CPT is representative of changes in world population by year. Data displayed will have an x-axis of year and a y-axis of annual population change. With user interaction, a checkbox is available to display data past 2023, and the graph scales accordingly. This future data, of course, is only a prediction. 
 
-[Link to Course Connections Video]
+## Why I Chose This Dataset
+Changes in population are accompanied by a variety of causes and therefore results, and it is important to visualize these changes. Within the next 100 years, this data predicts world population will stop increasing and instead begin decreasing, around the year 2080. 
+
+[Link to Course Connections Video](https://drive.google.com/file/d/16b3R9616f94I7eMbEFqBHJIh8oTGa2Pi/view?usp=sharing)
+[Link to Code Walkthrough Video](https://drive.google.com/file/d/1CKeEQHeuvCE700-w6SnIw19nyzmZD4eK/view?usp=sharing)
