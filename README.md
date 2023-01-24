@@ -1,6 +1,7 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=9646216&assignment_repo_type=AssignmentRepo)
 # ICS4U CPT - Data Interaction and Visualization - Lydia He
-[Link to data set](https://ourworldindata.org/grapher/population-growth-the-annual-change-of-the-population)
+## Dataset
+[Link to Data Set](https://ourworldindata.org/grapher/population-growth-the-annual-change-of-the-population)
 
 ## Description of Data
 The data modelled in this CPT is representative of changes in world population by year. Data displayed will have an x-axis of year and a y-axis of annual population change. With user interaction, a checkbox is available to display data past 2023, and the graph scales accordingly. This future data, of course, is only a prediction. 
