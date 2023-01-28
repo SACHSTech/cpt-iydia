@@ -6,12 +6,12 @@ public class Data extends DataCollection{
 
     /**
      * Constructor for Data, represents each data record
-     * @param intYear the year
-     * @param intPopulationGrowth the annual population growth
+     * @param intTheYear the year
+     * @param intThePopulationGrowth the annual population growth
      */
-    public Data(int intYear, int intPopulationGrowth) {
-        this.intYear = intYear;
-        this.intPopulationGrowth = intPopulationGrowth;
+    public Data(int intTheYear, int intThePopulationGrowth) {
+        this.intYear = intTheYear;
+        this.intPopulationGrowth = intThePopulationGrowth;
     }
 
     /**

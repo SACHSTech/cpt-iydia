@@ -10,12 +10,12 @@ public class Charts extends Application{
 
     /**
      * Constructor for chart
-     * @param xAxis the horizontal Numberaxis 
-     * @param yAxis the vertical NumberAxis
+     * @param theXAxis the horizontal Numberaxis 
+     * @param theYAxis the vertical NumberAxis
      */
-    public Charts(NumberAxis xAxis, NumberAxis yAxis){
-        this.xAxis = xAxis;
-        this.yAxis = yAxis;
+    public Charts(NumberAxis theXAxis, NumberAxis theYAxis){
+        this.xAxis = theXAxis;
+        this.yAxis = theYAxis;
     }
 
     /**
