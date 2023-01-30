@@ -9,9 +9,14 @@ import javafx.scene.chart.XYChart.Series;
 import javafx.stage.Stage;
 
 public class LineCharts extends Charts{
+
+    /**
+     * Construcotr for LineCharts
+     * @param theXAxis x-axis inherited from Charts
+     * @param theYAxis y-axis inherited from Charts
+     */
     public LineCharts(NumberAxis theXAxis, NumberAxis theYAxis) {
         super(theXAxis, theYAxis);
-        //TODO Auto-generated constructor stub
     }
 
     private DataCollection collection = new DataCollection();

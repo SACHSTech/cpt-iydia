@@ -7,9 +7,14 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 
 public class ScatterCharts extends Charts{
+
+    /**
+     * ScatterCharts Constructor
+     * @param theXAxis x-axis inherited from Charts
+     * @param theYAxis y-axis inherited from Charts
+     */
     public ScatterCharts(NumberAxis theXAxis, NumberAxis theYAxis) {
         super(theXAxis, theYAxis);
-        //TODO Auto-generated constructor stub
     }
 
     private DataCollection collection = new DataCollection();
