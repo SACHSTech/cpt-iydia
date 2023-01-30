@@ -1,14 +1,19 @@
 package cpt;
 
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Series;
 import javafx.stage.Stage;
 
-public class LineCharts extends Application{
+public class LineCharts extends Charts{
+    public LineCharts(NumberAxis theXAxis, NumberAxis theYAxis) {
+        super(theXAxis, theYAxis);
+        //TODO Auto-generated constructor stub
+    }
+
     private DataCollection collection = new DataCollection();
 
     /**

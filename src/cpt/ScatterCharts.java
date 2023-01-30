@@ -1,12 +1,17 @@
 package cpt;
 
-import javafx.application.Application;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.XYChart.Series;
 import javafx.stage.Stage;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 
-public class ScatterCharts extends Application{
+public class ScatterCharts extends Charts{
+    public ScatterCharts(NumberAxis theXAxis, NumberAxis theYAxis) {
+        super(theXAxis, theYAxis);
+        //TODO Auto-generated constructor stub
+    }
+
     private DataCollection collection = new DataCollection();
 
     /**
