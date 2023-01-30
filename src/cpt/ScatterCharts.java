@@ -7,6 +7,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 
 public class ScatterCharts extends Charts{
+    DataCollection collection = new DataCollection();
 
     /**
      * ScatterCharts Constructor
@@ -16,8 +17,6 @@ public class ScatterCharts extends Charts{
     public ScatterCharts(NumberAxis theXAxis, NumberAxis theYAxis) {
         super(theXAxis, theYAxis);
     }
-
-    private DataCollection collection = new DataCollection();
 
     /**
      * Method creates ScatterChart with integer axis for the filtered dataset of empirical data

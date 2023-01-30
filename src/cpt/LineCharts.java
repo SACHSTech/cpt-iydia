@@ -9,7 +9,8 @@ import javafx.scene.chart.XYChart.Series;
 import javafx.stage.Stage;
 
 public class LineCharts extends Charts{
-
+    DataCollection collection = new DataCollection();
+    
     /**
      * Construcotr for LineCharts
      * @param theXAxis x-axis inherited from Charts
@@ -18,8 +19,6 @@ public class LineCharts extends Charts{
     public LineCharts(NumberAxis theXAxis, NumberAxis theYAxis) {
         super(theXAxis, theYAxis);
     }
-
-    private DataCollection collection = new DataCollection();
 
     /**
      * Method creates LineChart with integer axis for the filtered dataset of empirical data
