@@ -13,3 +13,4 @@ Changes in population are accompanied by a variety of causes and therefore resul
 [Link to Demo Video](https://drive.google.com/file/d/16b3R9616f94I7eMbEFqBHJIh8oTGa2Pi/view?usp=sharing)
  
 [Link to Code Walkthrough Video](https://drive.google.com/file/d/1CKeEQHeuvCE700-w6SnIw19nyzmZD4eK/view?usp=sharing)
+Note: code has been updated since the video, both linecharts and scattercharts extend charts
